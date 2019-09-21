@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+   ossBackup:
+    image: leafiy/oss-backup:latest
+    volumes:
+      - ~/data/uploader-db-backup:/src/backups/db
+      - ~/data/uploader-db-logs:/src/backups/logs
+    environment:
+      CRON_SCHEDULE: "*/2 * * * *"
+      OBJECTKEY: "uploader"
+      OSS_BUCKET: ""
+      OSS_ACCESS_KEY: ""
+      OSS_SECRET_KEY: ""
+      OSS_ENDPOINT: ""
